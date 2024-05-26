@@ -45,10 +45,10 @@ labels = ['{0:%d %b %Y}:\n{1}'.format(d, l) for l, d in zip(labels, dates)]
 fig, ax = plt.subplots(figsize=(20, 6), constrained_layout=True)
 ax.set_ylim(-2, 1.75)
 ax.set_xlim(min_date, max_date)
-ax.axhline(0, xmin=0.05, xmax=0.95, c='deeppink', zorder=1)
+ax.axhline(0, xmin=0.05, xmax=0.95, c='#5E637A', zorder=1)  # Change the color here
 
-ax.scatter(dates, np.zeros(len(dates)), s=120, c='palevioletred', zorder=2)
-ax.scatter(dates, np.zeros(len(dates)), s=30, c='darkmagenta', zorder=3)
+ax.scatter(dates, np.zeros(len(dates)), s=120, c='#B4BAD1', zorder=2)
+ax.scatter(dates, np.zeros(len(dates)), s=30, c='#5E637A', zorder=3)
 
 # Custom offsets for labels
 label_offsets = [0.6, -0.7, 0.4, -1.8, 1.1, -0.8, 0.5, -2, 0.7, -0.8, 0.5, -0.7]
@@ -57,17 +57,18 @@ label_offsets = [0.6, -0.7, 0.4, -1.8, 1.1, -0.8, 0.5, -2, 0.7, -0.8, 0.5, -0.7]
 for i, (l, d) in enumerate(zip(labels, dates)):
     offset = label_offsets[i] * 100  # Adjust multiplier as needed
     ax.annotate(l, (d, 0), xytext=(0, offset), textcoords='offset points',
-                ha='center', fontfamily='serif', fontweight='bold', color='royalblue',
-                fontsize=12, arrowprops=dict(arrowstyle="->", color='royalblue'))
+                ha='center', fontfamily='serif', fontweight='bold', color='#5148EE',
+                fontsize=12, arrowprops=dict(arrowstyle="->", color='#5148EE'))
 
 # Stems
 stems = np.zeros(len(dates))
 stems[::2] = 0.3
 stems[1::2] = -0.3   
 markerline, stemline, baseline = ax.stem(dates, stems, use_line_collection=True)
-plt.setp(markerline, marker=',', color='darkmagenta')
-plt.setp(stemline, color='darkmagenta')
+plt.setp(markerline, marker=',', color='#5E637A')
+plt.setp(stemline, color='#5E637A')
 
+axis_color = '#5E637A'
 # Hide lines around chart
 for spine in ["left", "top", "right", "bottom"]:
     ax.spines[spine].set_visible(False)
@@ -77,7 +78,7 @@ ax.set_xticks([])
 ax.set_yticks([])
 
 # Title
-ax.set_title('Important Milestones in the Covid-19 Pandemic', fontweight="bold", fontfamily='serif', fontsize=16, color='royalblue')
+ax.set_title('Important Milestones in the Covid-19 Pandemic', fontweight="bold", fontfamily='serif', fontsize=16, color='#5148EE')
 
 # Show the plot
 plt.show()
